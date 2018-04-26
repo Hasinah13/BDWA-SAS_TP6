@@ -28,9 +28,7 @@ if [ ! -e "/tmp/backup/" ]; then
 	mkdir /tmp/backup
 fi
 
-
-
 cd $way
 date=$(date '+%d-%m-%Y')
-tar cfz backup-$date.tar.gz 
+tar cfz backup-$date.tar.gz $way
 mv backup-$date.tar.gz /tmp/backup/
