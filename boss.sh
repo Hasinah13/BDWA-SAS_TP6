@@ -7,7 +7,7 @@ set -o pipefail
 set -o nounset
 
 
-# demander le chemin d'un dossier en premier argument
+# Vérifier que l'utilisateur a entrer un argument
 
 # tester si le chemin entré en paramètre est bien un dossier
 if [ -d ${1} ]; then
@@ -15,9 +15,9 @@ if [ -d ${1} ]; then
 	echo "Le chemin est bien un dossier"
 # Si le dossier entré en paramètre n'est pas un dossier on redemande à l'utilisateur d'entrer un chemin et on récupère la valeur en la testant a nouveau (avec une boucle)
 else
-echo "L'argument n'est pas un dossier. Veuillez entrer le chemin"
-        read way
-while [ -d ${way} ]
+	echo "L'argument n'est pas un dossier. Veuillez entrer le chemin"
+	read way
+	while [ ! -d "$way" ]
     do
         echo "L'argument n'est pas un dossier. Veuillez entrer le chemin"
         read way
@@ -29,7 +29,6 @@ if [ ! -e "/tmp/backup/" ]; then
 	mkdir /tmp/backup
 fi
 
-cd $way
 date=$(date '+%d-%m-%Y')
 tar cfz backup-$date.tar.gz $way
 mv backup-$date.tar.gz /tmp/backup/
