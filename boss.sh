@@ -24,3 +24,12 @@ while [ -d ${way} ]
     done
 fi
 # le chemin est bien un dossier on créer un archive avec le contenu du dossier et on la place dans le dossier /tmp/backups/
+
+if [ ! -e "/tmp/backup/" ]; then
+	mkdir /tmp/backup
+fi
+
+cd $way
+date=$(date '+%d-%m-%Y')
+tar cfz backup-$date.tar.gz $way
+mv backup-$date.tar.gz /tmp/backup/
