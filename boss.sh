@@ -14,3 +14,14 @@ set -o nounset
 # Si le dossier entré en paramètre n'est pas un dossier on redemande à l'utilisateur d'entrer un chemin et on récupère la valeur en la testant a nouveau (avec une boucle)
 
 # le chemin est bien un dossier on créer un archive avec le contenu du dossier et on la place dans le dossier /tmp/backups/
+
+if [ ! -e "/tmp/backup/" ]; then
+	mkdir /tmp/backup
+fi
+
+
+chemin=$HOME/test
+cd chemin
+date=$(date '+%d-%m-%Y')
+tar cfz backup-$date.tar.gz 
+mv backup-$date.tar.gz /tmp/backup/
