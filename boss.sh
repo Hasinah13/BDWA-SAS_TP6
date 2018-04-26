@@ -29,8 +29,8 @@ if [ ! -e "/tmp/backup/" ]; then
 fi
 
 
-chemin=$HOME/test
-cd chemin
+
+cd $way
 date=$(date '+%d-%m-%Y')
 tar cfz backup-$date.tar.gz 
 mv backup-$date.tar.gz /tmp/backup/
