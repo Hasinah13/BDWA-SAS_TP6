@@ -1,8 +1,12 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 
 Args=$1
 
+=======
+Args=$1
+>>>>>>> 7f13eb89b47790fdd8db082773ec77bf957547be
 
 # check if last argument is directory
 
@@ -10,6 +14,7 @@ if [[ -d "$Args" ]]; then
    echo "it is a directory"
 else
    echo "it is not a directory"
+<<<<<<< HEAD
    echo -n "Please enter a valid argument :"
    read text
    echo "$text"
@@ -28,3 +33,15 @@ else
 echo "gg"
 
 fi
+=======
+fi
+
+# if it is not a directory
+
+while [ -d ${!Args} ]
+do
+	echo "Bad path"
+done
+
+echo "Good path"
+>>>>>>> 7f13eb89b47790fdd8db082773ec77bf957547be
