@@ -17,8 +17,9 @@ else
    while [[ ! -d "$text" ]]; 
    do
    	echo -n "this is not a valid directory please check again "
+
    	read text
-   	echo "$text"
+   	
    	#close to the correct answer, fixed infinite loop, try something with case $var in -d
    	#for archive right something as 
    	#echo var name:
@@ -30,3 +31,14 @@ echo "gg"
 
 fi
 
+if [[ -d /tmp/backups ]]; then
+	echo "Yolo"
+else
+   mkdir /tmp/backups
+fi
+
+cd /tmp/backups
+date=$(date "+%d-%m-%Y")
+tar cfz backup-$date
+mv backup-$date.tar.gz /backups
+echo "Last backup: $date" >> /tmp/backups/backups.log
