@@ -1,40 +1,34 @@
 #!/bin/bash
 
+#adding the argument to a variable
 BackupDirectory=$1
 
-# check if last argument is directory
-
+# check if the variable is a directory
 if [[ -d "$BackupDirectory" ]]; then
    echo "it is a directory"
-else
+else #continuous check for a directory
    echo "it is not a directory"
    echo -n "Please enter a valid argument :"
    read Args
-   echo "$BackupDirectory"
-   while [[ ! -d "$BackupDirectory" ]]; 
+   echo "you entered: $BackupDirectory" #shows what was sent to see where the error was
+   while [[ ! -d "$BackupDirectory" ]]; #same principle as line 7 just seen from the other side.
    do
    	echo -n "this is not a valid directory please check again "
 
    	read Args
-   	
-   	#close to the correct answer, fixed infinite loop, try something with case $var in -d
-   	#for archive right something as 
-   	#echo var name:
-   	#read varname
-   	#echo file >> /tmp/archive/$varname
    done
 
-echo "gg"
+echo "yes this is a directory" 
 
-fi
+fi #end of if{}
 
-if [[ -d /tmp/backups ]]; then
-	echo "Yolo"
+if [[ -d /tmp/backups ]]; then #checks if the dir already exists
+	echo "/n"
 else
-   mkdir /tmp/backups
-fi
+   mkdir /tmp/backups #if the dir does not exists it creates it
+fi #end of if{}
 
+#archive of the work
 date=$(date "+%H:%M %d/%m/%Y")
-tar -cpzf /tmp/backups/$BackupDirectory.tar.gz $BackupDirectory
-# mv $BackupDirectory.tar.gz /tmp/backups
-echo "Last backup of $BackupDirectory : DATE TIME $date" >> /tmp/backups/backups.log
+tar -cpzf /tmp/backups/$BackupDirectory.tar.gz $BackupDirectory #compressing and saving
+echo "Last backup of $BackupDirectory : DATE TIME $date" >> /tmp/backups/backups.log #writes in the backups.log file to keep track of what was backed
