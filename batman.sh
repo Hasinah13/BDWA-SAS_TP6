@@ -8,7 +8,7 @@ if [[ -d "$BackupDirectory" ]]; then
    echo "it is a directory"
 else
    echo "it is not a directory"
-   echo -n "Please enter a valid argument TEST TEST:"
+   echo -n "Please enter a valid argument :"
    read Args
    echo "$BackupDirectory"
    while [[ ! -d "$BackupDirectory" ]]; 
