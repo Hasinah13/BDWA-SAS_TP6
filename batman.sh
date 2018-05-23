@@ -9,13 +9,13 @@ if [[ -d "$BackupDirectory" ]]; then
 else #continuous check for a directory
    echo "it is not a directory"
    echo -n "Please enter a valid argument :"
-   read Args
+   read BackupDirectory
    echo "you entered: $BackupDirectory" #shows what was sent to see where the error was
    while [[ ! -d "$BackupDirectory" ]]; #same principle as line 7 just seen from the other side.
    do
    	echo -n "this is not a valid directory please check again "
 
-   	read Args
+   	read BackupDirectory
    done
 
 echo "yes this is a directory" 
@@ -23,7 +23,7 @@ echo "yes this is a directory"
 fi #end of if{}
 
 if [[ -d /tmp/backups ]]; then #checks if the dir already exists
-	echo "/n"
+echo " "
 else
    mkdir /tmp/backups #if the dir does not exists it creates it
 fi #end of if{}
